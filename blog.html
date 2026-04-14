@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Turismo</title>
+    <link href="turismo.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="turismo.html">Turismo</a>
+        </div>
+        <nav class="main-nav">
+            <a href="turismo.html">Home</a>
+            <a href="destinos.html">Destinos</a>
+            <a href="agencias.html">Agencias</a>
+            <a href="precios.html">Precios</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+        <button class="mobile-toggle" aria-label="Mostrar menú">☰</button>
+        <button class="theme-toggle" aria-label="Cambiar tema">🌙</button>
+    </header>
+
+    <main>
+        <section class="hero hero-compact" data-reveal>
+            <div class="hero-overlay"></div>
+            <div class="hero-contenido">
+                <small>Revista</small>
+                <h1>Historias de viaje y rutas inspiradoras</h1>
+                <p>Descubrí contenido en formato magazine con categorías y comentarios.</p>
+            </div>
+        </section>
+
+        <section class="blog-filters" data-reveal>
+            <div class="section-header">
+                <small>Categorías</small>
+                <h2>Filtra por tags y temas</h2>
+            </div>
+                <input type="radio" name="blog-filter" id="todos" checked>
+                <input type="radio" name="blog-filter" id="aventura">
+                <input type="radio" name="blog-filter" id="cultural">
+                <input type="radio" name="blog-filter" id="playa">
+            <div class="filters">
+                <label for="todos">Todos</label>
+                <label for="aventura">Aventura</label>
+                <label for="cultural">Cultural</label>
+                <label for="playa">Playa</label>
+            </div>
+        
+        <div class="blog-grid" data-reveal>
+            <article class="blog-article aventura reveal" data-reveal>
+                <div class="article-media"></div>
+                <div class="article-content">
+                    <span class="tag">Aventura</span>
+                    <h3>Escapada de trekking en los Andes</h3>
+                    <p>Explora rutas de montaña, lagunas escondidas y noches bajo las estrellas.</p>
+                </div>
+            </article>
+
+            <article class="blog-article cultural reveal" data-reveal>
+                <div class="article-media"></div>
+                <div class="article-content">
+                    <span class="tag">Cultural</span>
+                    <h3>Ciudades históricas y museos imprescindibles</h3>
+                    <p>Descubre los mejores itinerarios para sumergirte en arte y patrimonio.</p>
+                </div>
+            </article>
+
+            <article class="blog-article playa reveal" data-reveal>
+                <div class="article-media"></div>
+                <div class="article-content">
+                    <span class="tag">Playa</span>
+                    <h3>Guía para el paraíso de playas secretas</h3>
+                    <p>Encuentra las mejores playas menos conocidas y tips para tu próxima visita.</p>
+                </div>
+            </article>
+
+            <article class="blog-article aventura reveal" data-reveal>
+                <div class="article-media"></div>
+                <div class="article-content">
+                    <span class="tag">Aventura</span>
+                    <h3>Safari fotográfico: naturaleza salvaje</h3>
+                    <p>Consejos para capturar la mejor fotografía en reservas naturales.</p>
+                </div>
+            </article>
+
+            <article class="blog-article cultural reveal" data-reveal>
+                <div class="article-media"></div>
+                <div class="article-content">
+                    <span class="tag">Festivales</span>
+                    <h3>Festivales y tradiciones locales</h3>
+                    <p>Cómo planificar tu viaje para vivir celebraciones auténticas.</p>
+                </div>
+            </article>
+        </div>
+        </section>
+
+        <section class="comments-section" data-reveal>
+            <div class="section-header">
+                <small>Comentarios</small>
+                <h2>Lo que dicen nuestros lectores</h2>
+            </div>
+            <div class="comments-list">
+                <article class="comment reveal" data-reveal>
+                    <div class="avatar"></div>
+                    <div class="comment-body">
+                        <p>“La guía me ayudó a elegir un destino perfecto para mi luna de miel.”</p>
+                        <strong>Lucía</strong>
+                    </div>
+                </article>
+                <article class="comment reveal" data-reveal>
+                    <div class="avatar"></div>
+                    <div class="comment-body">
+                        <p>“Los artículos tienen datos claros, estilo magazine y excelente inspiración.”</p>
+                        <strong>Martín</strong>
+                    </div>
+                </article>
+                <article class="comment reveal" data-reveal>
+                    <div class="avatar"></div>
+                    <div class="comment-body">
+                        <p>“Inmediatamente sentí ganas de preparar mi próxima salida de aventura.”</p>
+                        <strong>Camila</strong>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const nav = document.querySelector('.main-nav');
+        const themeToggle = document.querySelector('.theme-toggle');
+        const root = document.documentElement;
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => nav.classList.toggle('nav-open'));
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            themeToggle.textContent = '☀️';
+        }
+
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const isDark = root.getAttribute('data-theme') === 'dark';
+                root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+                themeToggle.textContent = isDark ? '🌙' : '☀️';
+                localStorage.setItem('theme', isDark ? 'light' : 'dark');
+            });
+        }
+
+        const revealItems = document.querySelectorAll('[data-reveal]');
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealItems.forEach(item => observer.observe(item));
+        }
+    </script>
+</body>
+
+</html>

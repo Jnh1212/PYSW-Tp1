@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinos - Turismo</title>
+    <link href="turismo.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="turismo.html">Turismo</a>
+        </div>
+        <nav class="main-nav">
+            <a href="turismo.html">Home</a>
+            <a href="destinos.html">Destinos</a>
+            <a href="agencias.html">Agencias</a>
+            <a href="precios.html">Precios</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+        <button class="mobile-toggle" aria-label="Mostrar menú">☰</button>
+        <button class="theme-toggle" aria-label="Cambiar tema">🌙</button>
+    </header>
+
+    <main class="destinos-page">
+        <section class="hero hero-compact">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <small>Explora</small>
+                <h1>Encuentra el destino perfecto</h1>
+                <p>Filtra por intereses y descubre destinos únicos con una galería en estilo masonry.</p>
+            </div>
+        </section>
+
+        <section class="filters-section">
+            <div class="section-header">
+                <small>Filtros</small>
+                <h2>Explora por categoría</h2>
+                <p>Selecciona una categoría para ver destinos que coincidan con tu estilo de viaje.</p>
+            </div>
+            <div class="filters">
+                <input type="radio" name="destination-filter" id="all" checked>
+                <label for="all">Todos</label>
+                <input type="radio" name="destination-filter" id="cultura">
+                <label for="cultura">Cultural</label>
+                <input type="radio" name="destination-filter" id="naturaleza">
+                <label for="naturaleza">Naturaleza</label>
+                <input type="radio" name="destination-filter" id="playa">
+                <label for="playa">Sol y playa</label>
+                <input type="radio" name="destination-filter" id="gastronomia">
+                <label for="gastronomia">Gastronómico</label>
+                <input type="radio" name="destination-filter" id="religioso">
+                <label for="religioso">Religioso</label>
+            </div>
+            <div class="destinations-grid">
+                <article class="card cultura tall">
+                    <div class="card-content">
+                        <h3>Ruta de Museos</h3>
+                        <p>Recorre los mejores museos y patrimonio cultural urbanos.</p>
+                    </div>
+                </article>
+                <article class="card naturaleza wide">
+                    <div class="card-content">
+                        <h3>Parque Nacional</h3>
+                        <p>Senderismo y paisajes naturales protegidos.</p>
+                    </div>
+                </article>
+                <article class="card playa tall">
+                    <div class="card-content">
+                        <h3>Playa Dorada</h3>
+                        <p>Días de sol, deportes acuáticos y relax junto al mar.</p>
+                    </div>
+                </article>
+                <article class="card gastronomia big">
+                    <div class="card-content">
+                        <h3>Tour Gastronómico</h3>
+                        <p>Sabores locales, mercados y cenas memorables.</p>
+                    </div>
+                </article>
+                <article class="card religioso tall">
+                    <div class="card-content">
+                        <h3>Caminata Sagrada</h3>
+                        <p>Visita templos históricos y sitios de peregrinación.</p>
+                    </div>
+                </article>
+                <article class="card cultura wide">
+                    <div class="card-content">
+                        <h3>Pueblos Históricos</h3>
+                        <p>Arquitectura colonial y tradiciones locales vivas.</p>
+                    </div>
+                </article>
+                <article class="card naturaleza tall">
+                    <div class="card-content">
+                        <h3>Reserva de Aves</h3>
+                        <p>Observación de fauna y contacto directo con la naturaleza.</p>
+                    </div>
+                </article>
+                <article class="card gastronomia tall">
+                    <div class="card-content">
+                        <h3>Cocina de Autor</h3>
+                        <p>Experiencias gourmet y talleres de cocina local.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="price-section">
+            <div class="section-header">
+                <small>Precios</small>
+                <h2>Compara destinos y tarifas</h2>
+                <p>Una tabla responsiva que se adapta a escritorio y dispositivos móviles.</p>
+            </div>
+            <div class="table-responsive">
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>Destino</th>
+                            <th>Categoría</th>
+                            <th>Duración</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Destino">Islas del Caribe</td>
+                            <td data-label="Categoría">Sol y playa</td>
+                            <td data-label="Duración">7 noches</td>
+                            <td data-label="Precio">USD 1,350</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Destino">Ruta de Museos</td>
+                            <td data-label="Categoría">Cultural</td>
+                            <td data-label="Duración">4 noches</td>
+                            <td data-label="Precio">USD 980</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Destino">Parque Nacional</td>
+                            <td data-label="Categoría">Naturaleza</td>
+                            <td data-label="Duración">5 noches</td>
+                            <td data-label="Precio">USD 1,120</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Destino">Tour Gastronómico</td>
+                            <td data-label="Categoría">Gastronómico</td>
+                            <td data-label="Duración">3 noches</td>
+                            <td data-label="Precio">USD 760</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Destino">Caminata Sagrada</td>
+                            <td data-label="Categoría">Religioso</td>
+                            <td data-label="Duración">6 noches</td>
+                            <td data-label="Precio">USD 1,180</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="newsletter">
+                <h3>Solicita una cotización</h3>
+                <p>Déjanos tu correo y te enviaremos ofertas exclusivas.</p>
+                <form>
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+            <div class="social-links">
+                <h3>Redes</h3>
+                <div class="social-icons">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+            <div class="map-container">
+                <h3>Oficina central</h3>
+                <iframe
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-58.50%2C-34.80%2C-58.30%2C-34.60&amp;layer=mapnik"
+                    aria-label="Mapa interactivo"
+                    loading="lazy"></iframe>
+            </div>
+        </div>
+        <p class="copyright">© 2026 Turismo. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const nav = document.querySelector('.main-nav');
+        const themeToggle = document.querySelector('.theme-toggle');
+        const root = document.documentElement;
+
+        mobileToggle.addEventListener('click', () => {
+            nav.classList.toggle('nav-open');
+        });
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = root.getAttribute('data-theme') === 'dark';
+            root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeToggle.textContent = isDark ? '🌙' : '☀️';
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        });
+
+        const revealItems = document.querySelectorAll('[data-reveal]');
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealItems.forEach(item => observer.observe(item));
+        }
+    </script>
+</body>
+
+</html>

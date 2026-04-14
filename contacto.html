@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Turismo</title>
+    <link href="turismo.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="turismo.html">Turismo</a>
+        </div>
+        <nav class="main-nav">
+            <a href="turismo.html">Home</a>
+            <a href="destinos.html">Destinos</a>
+            <a href="agencias.html">Agencias</a>
+            <a href="precios.html">Precios</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+        <button class="mobile-toggle" aria-label="Mostrar menú">☰</button>
+        <button class="theme-toggle" aria-label="Cambiar tema">🌙</button>
+    </header>
+
+    <main class="contacto-page">
+        <section class="hero hero-compact">
+            <div class="hero-overlay"></div>
+            <div class="hero-contenido">
+                <small>Contacto</small>
+                <h1>Escribinos y coordinemos tu próximo viaje</h1>
+                <p>Completa el formulario con tus datos y te responderemos más rápido de lo que imaginas.</p>
+            </div>
+        </section>
+
+        <section class="contacto-layout">
+            <aside class="contacto-info">
+                <h2>Información de contacto</h2>
+                <p>Estamos listos para ayudarte a diseñar tu experiencia perfecta.</p>
+                <ul>
+                    <li><strong>Teléfono:</strong> +54 9 11 1234 5678</li>
+                    <li><strong>Email:</strong> contacto@turismo.com</li>
+                    <li><strong>Horario:</strong> Lun a Vie 9:00 - 18:00</li>
+                </ul>
+                <p class="form-note">Los campos marcados con * son obligatorios. El formulario validará tus datos en tiempo real.</p>
+            </aside>
+
+            <section class="contacto-form">
+                <form id="contactoForm" novalidate>
+                    <div class="form-group">
+                        <label for="name">Nombre y apellido *</label>
+                        <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo electrónico *</label>
+                        <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+54 9 11 1234 5678">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categoria">Tipo de consulta *</label>
+                        <select id="categoria" name="categoria" required>
+                            <option value="" disabled selected>Seleccioná una opción</option>
+                            <option value="paquete">Paquete turístico</option>
+                            <option value="personalizado">Viaje personalizado</option>
+                            <option value="grupo">Viaje en grupo</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Tu mensaje *</label>
+                        <textarea id="message" name="message" placeholder="Contanos qué necesitas" required></textarea>
+                    </div>
+
+                    <div class="submit-wrapper">
+                        <button type="submit" class="submit-button">Enviar mensaje</button>
+                        <div class="spinner-overlay" id="spinnerOverlay">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </section>
+    </main>
+
+    <div class="modal" id="confirmationModal">
+        <div class="modal-card">
+            <h3>Formulario enviado</h3>
+            <p>Gracias por contactarnos. Pronto recibirás una respuesta de nuestro equipo.</p>
+            <button id="closeModal">Aceptar</button>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('contactoForm');
+        const spinner = document.getElementById('spinnerOverlay');
+        const modal = document.getElementById('confirmationModal');
+        const closeModal = document.getElementById('closeModal');
+
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            spinner.classList.add('show');
+            setTimeout(() => {
+                spinner.classList.remove('show');
+                modal.classList.add('show');
+                form.reset();
+            }, 1400);
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('show');
+        });
+
+        window.addEventListener('click', event => {
+            if (event.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+
+        const themeToggle = document.querySelector('.theme-toggle');
+        const root = document.documentElement;
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = root.getAttribute('data-theme') === 'dark';
+            root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeToggle.textContent = isDark ? '🌙' : '☀️';
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        });
+
+        const revealItems = document.querySelectorAll('[data-reveal]');
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealItems.forEach(item => observer.observe(item));
+        }
+    </script>
+</body>
+
+</html>
